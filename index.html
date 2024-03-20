@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo App</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="todo-app">
+  <h1>Todo App</h1>
+  
+  <div>
+    <input v-model="newTodo" @keyup.enter="addTodo" placeholder="Add a new todo">
+    <button @click="addTodo">Add</button>
+  </div>
+  
+  <ul>
+    <li v-for="(todo, index) in todos" :key="index">
+      <span>{{ todo.text }}</span>
+      <button @click="removeTodo(index)">Remove</button>
+    </li>
+  </ul>
+</div>
+
+<div id="rate-app">
+    <h1>Rate App</h1>
+
+    <div>
+        <input type="number" v-model="amount" placeholder="Amount"/>
+        <input type="number" v-model="rate" placeholder="Rate"/>
+        <input type="number" v-model="time" placeholder="Time"/>
+        <p>Your rate will be: {{answer}}</p>
+    </div>
+
+</div>
+
+
+<script>
+
+    new Vue({
+        el: "#rate-app",
+        data: {
+            amount: "",
+            rate: "",
+            time: "",
+        },
+        computed: {
+            answer: function () {
+            return ((this.amount * this.rate * this.time) / 100)
+            }
+        }
+    })
+
+
+  new Vue({
+    el: '#todo-app',
+    data: {
+      newTodo: '',
+      todos: []
+    },
+    methods: {
+      addTodo: function() {
+        if (this.newTodo !== '') {
+          this.todos.push({
+            text: this.newTodo,
+          });
+          this.newTodo = '';
+        }
+      },
+      removeTodo: function(index) {
+        this.todos.splice(index, 1);
+      }
+    }
+  });
+</script>
+
+</body>
+</html>

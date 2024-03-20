@@ -1,0 +1,48 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: rgb(7, 222, 229);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+#todo-app,
+#rate-app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(7, 132, 241);
+    flex-direction: column;
+    width: 300px;
+    padding: 10px;
+    border: 1px solid black;
+}
+
+#rate-app {
+    margin-top: 10px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    align-self: flex-start;
+
+    margin-top: 30px;
+    width: 100%;
+}
+
+li {
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+}
